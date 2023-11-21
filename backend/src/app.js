@@ -10,6 +10,8 @@ const { fromEnv } = require("@aws-sdk/credential-providers")
 const { getSignedUrl } = require("@aws-sdk/s3-request-presigner")
 const multer = require("multer")
 const dotenv = require("dotenv")
+const fs = require('fs');
+const path = require('path');
 
 let {Chat_Model,Customers_Model, Admin_Chat_Model, Customer_Chat_Model, Usernames_Model} = require('../models/modelAssociations');
 const { Admins_Model } = require("../models/models");
@@ -34,6 +36,13 @@ const io = socketIo(ChatServer, {
     credentials: true,
   }
 });
+
+
+const uploadDir = '/tmp/uploads';
+
+if (!fs.existsSync(uploadDir)) {
+  fs.mkdirSync(uploadDir);
+}
 
 //Database
 const database = config.database
