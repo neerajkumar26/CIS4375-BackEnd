@@ -284,9 +284,7 @@ io.on('connection', (socket) => {
 
 //imports the routes and sets up the middle ware for the routes on /test
 //localhost:PORT/test
-app.use('/', (req, res) => {
-  res.send("Teesting")
-})
+
 app.use('/', require('../routes/routes'))
 app.use('/customerData', require('../routes/customerRoutes'))
 app.use('/adminData', require('../routes/adminRoutes'))
