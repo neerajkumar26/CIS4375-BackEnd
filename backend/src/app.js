@@ -22,7 +22,7 @@ dotenv.config()
 
 const app = express()
 app.use(cors({
-  origin: "*",
+  origin: "https://coogtech.vercel.app",
   credentials: true,
 }));
 app.use(morgan('combined')) //logs connections
@@ -32,7 +32,7 @@ app.use(cookieParser())
 const ChatServer = http.createServer(app);
 const io = socketIo(ChatServer, {
   cors: {
-    origin: "*",
+    origin: "https://coogtech.vercel.app",
     credentials: true,
   }
 });
